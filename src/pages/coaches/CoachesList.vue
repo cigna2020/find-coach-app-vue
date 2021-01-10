@@ -3,25 +3,27 @@
     FILTER
   </section>
   <section>
-    <div class="controls">
-      <button>Refresh</button>
-      <router-link to="/register">Register as a Coach</router-link>
-    </div>
-    <ul v-if="hasCoaches">
-      <!-- <li v-for="coach in filterdCoaches" :key="coach.id">
+    <base-card>
+      <div class="controls">
+        <base-button mode="outline">Refresh</base-button>
+        <base-button link to="/register">Register as a Coach</base-button>
+      </div>
+      <ul v-if="hasCoaches">
+        <!-- <li v-for="coach in filterdCoaches" :key="coach.id">
         {{ coach.firstName }}
       </li> -->
-      <coach-item
-        v-for="coach in filterdCoaches"
-        :key="coach.id"
-        :id="coach.id"
-        :first-name="coach.firstName"
-        :last-name="coach.lastName"
-        :rate="coach.hourlyRate"
-        :areas="coach.areas"
-      ></coach-item>
-    </ul>
-    <h3 v-else>Sorry, there is no coach now!</h3>
+        <coach-item
+          v-for="coach in filterdCoaches"
+          :key="coach.id"
+          :id="coach.id"
+          :first-name="coach.firstName"
+          :last-name="coach.lastName"
+          :rate="coach.hourlyRate"
+          :areas="coach.areas"
+        ></coach-item>
+      </ul>
+      <h3 v-else>Sorry, there is no coach now!</h3>
+    </base-card>
   </section>
 </template>
 
