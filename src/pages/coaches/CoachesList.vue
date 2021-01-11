@@ -6,7 +6,9 @@
     <base-card>
       <div class="controls">
         <base-button mode="outline">Refresh</base-button>
-        <base-button link to="/register">Register as a Coach</base-button>
+        <base-button link to="/register" v-if="!isCoach"
+          >Register as a Coach</base-button
+        >
       </div>
       <ul v-if="hasCoaches">
         <!-- <li v-for="coach in filterdCoaches" :key="coach.id">
@@ -45,6 +47,9 @@ export default {
     };
   },
   computed: {
+    isCoach() {
+      return this.$store.getters['coaches/isCoach'];
+    },
     filterdCoaches() {
       //   return this.$store.getters['coaches/coaches']; // becouse of using namespaced
       const coaches = this.$store.getters['coaches/coaches']; // use CoachFilter
