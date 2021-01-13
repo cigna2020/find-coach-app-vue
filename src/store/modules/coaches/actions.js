@@ -27,9 +27,10 @@ export default {
         })
     },
 
-    async loadCoaches(context) {
+    async loadCoaches(context, payload) {
         // если время получения данных меньше 1 мин., новые данные о коучах не получаем
-        if (!context.getters.shouldUpdate) {
+        // forceRefresh - вызывается кнопкой Refresh
+        if (!payload.forceRefresh && !context.getters.shouldUpdate) {
             return
         }
 
