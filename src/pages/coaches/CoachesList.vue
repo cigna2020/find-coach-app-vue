@@ -81,8 +81,8 @@ export default {
     }
   },
   created() {
-    // works without it also
-    this.loadCoaches;
+    // to call the method automatically
+    this.loadCoaches();
   },
   methods: {
     setFilters(updatedFilters) {

@@ -37,7 +37,7 @@ export default {
         this.formIsValid = false;
         return;
       }
-      this.$store.dispatch('requests/ContactCoach', {
+      this.$store.dispatch('requests/contactCoach', {
         email: this.email,
         message: this.message,
         coachId: this.$route.params.id // без params получим underfined
