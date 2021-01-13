@@ -28,6 +28,11 @@ export default {
     },
 
     async loadCoaches(context) {
+        // если время получения данных меньше 1 мин., новые данные о коучах не получаем
+        if (!context.getters.shouldUpdate) {
+            return
+        }
+
         const response = await fetch(`https://vue-http-demo-5b114-default-rtdb.firebaseio.com/coaches.json`);
         const responseData = await response.json()
 
@@ -53,5 +58,6 @@ export default {
         }
 
         context.commit('setCoaches', coaches);
+        context.commit('setFetchTimestamp');
     }
 };
