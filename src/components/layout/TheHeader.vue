@@ -31,8 +31,6 @@ export default {
     logout() {
       this.$store.dispatch('logout');
       this.$router.replace('/coaches');
-      localStorage.removeItem('token');
-      localStorage.removeItem('userId');
     }
   }
 };
