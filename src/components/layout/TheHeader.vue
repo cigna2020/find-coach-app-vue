@@ -12,8 +12,8 @@
         </li>
         <li>
           <base-button v-if="isAuthenticated" @click="logout"
-            >Logout</base-button
-          >
+            >Logout
+          </base-button>
         </li>
       </ul>
     </nav>
@@ -31,6 +31,8 @@ export default {
     logout() {
       this.$store.dispatch('logout');
       this.$router.replace('/coaches');
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
     }
   }
 };
