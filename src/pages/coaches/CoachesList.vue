@@ -16,11 +16,17 @@
       <base-card>
         <div class="controls">
           <base-button mode="outline" @click="loadCoaches(true)"
-            >Refresh</base-button
-          >
-          <base-button link to="/register" v-if="!isCoach && !isLoading"
-            >Register as a Coach</base-button
-          >
+            >Refresh
+          </base-button>
+          <base-button
+            link
+            to="/register"
+            v-if="isAuthenticated && !isCoach && !isLoading"
+            >Register as a Coach
+          </base-button>
+          <base-button link to="/auth" v-if="!isAuthenticated"
+            >Login
+          </base-button>
         </div>
         <div v-if="isLoading">
           <base-spinner></base-spinner>
@@ -67,6 +73,9 @@ export default {
   computed: {
     isCoach() {
       return this.$store.getters['coaches/isCoach'];
+    },
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
     },
     filterdCoaches() {
       //   return this.$store.getters['coaches/coaches']; // becouse of using namespaced
