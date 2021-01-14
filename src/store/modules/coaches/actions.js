@@ -9,8 +9,10 @@ export default {
             areas: data.areas
         }
 
-        // async/await in order not to use .then()/.catch()
-        const response = await fetch(`https://vue-http-demo-5b114-default-rtdb.firebaseio.com/coaches/${userId}.json`, {
+        const token = context.rootGetters.token;
+
+        // async/await in order not to use .then()/catch()
+        const response = await fetch(`https://vue-http-demo-5b114-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=` + token, {
             method: 'PUT',
             body: JSON.stringify(coachData)
         });
