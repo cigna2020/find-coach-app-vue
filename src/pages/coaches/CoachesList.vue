@@ -24,8 +24,10 @@
             v-if="isAuthenticated && !isCoach && !isLoading"
             >Register as a Coach
           </base-button>
-          <base-button link to="/auth" v-if="!isAuthenticated"
-            >Login
+          <!-- ?redirect=register uses needs to redirect to register form, must bu used with $route.query. in UserAuth -->
+          <!-- the name 'redirect' is up to you -->
+          <base-button link to="/auth?redirect=register" v-if="!isAuthenticated"
+            >Login to Register as a Coach
           </base-button>
         </div>
         <div v-if="isLoading">
